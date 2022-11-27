@@ -27,6 +27,7 @@
     > 将当前暂存区中的文件实际保存到仓库的历史记录中。通过这些记录，我们就可以在工作树中复原文件
 
   + -m ""
+    
     + 可以添加提交信息
 
 + git log
@@ -57,3 +58,41 @@
 + git log --graph
   + 以图表的形式提交输出日志
 
+## 更改提交的操作
+
++ git reset
+
+  > git另一个特征便是可以灵活操作历史版本
+
+  + 回溯历史版本
+  + git reset --hard hash值
+    + hash值指的是目标时间点的哈希值
+
+## 推送至远程仓库
+
+远程仓库顾名思义，是与我们本地仓库相对独立的另一个仓库。
+
++ git remote add
++ git push  -u orgin master
+  + -u参数可以在推送的同时，将origin仓库的master分支设置为本地仓库当前分支的upstream（上游）
++  git push -u origin feature-D 
+  + 本地新建立的分支在推送的时候也要和远端的分支名保持一致
+  + 故需要加上-u参数
+
+## 从远程仓库获取
+
++ git clone
+  + 执行git clone命令后我们会默认处于master分支下，同时系统会自动将origin设置成该远程仓库的标识符。也就是说，当前本地仓库的master分支与GitHub端远程仓库（origin）的master分支在内容上是完全相同的。
++ git branch -a
+  + 查看当前分支的相关信息，-a参数可以同时显示本地仓库和远程仓库的分支信息
++ git checkout -b feature-D origin/feature-D
+  + -b参数的后面是本地仓库中新建分支的名称。新建分支名称后面是获取来源的分支名称。例子中指定了origin/feature-D，就是说以名为origin的仓库（这里指GitHub端的仓库）的feature-D分支为来源，在本地仓库中创建feature-D分支。
++ git pull
+  +  从远端仓库拉取更新，使得本地内容为最新
+  + 然后就可以将自己修改的内容更新上去了
+  + == git  fetch  + git merge
++ git  fetch
+
+## 高级操作
+
++ git rebase
